@@ -5,7 +5,6 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # 3. 필수 패키지 설치
-# dos2unix를 추가했습니다: 윈도우에서 작성된 스크립트가 리눅스로 넘어올 때 발생하는 오류를 자동 수정해줍니다.
 RUN apt-get update && \
     apt-get install -y git build-essential wget dos2unix && \
     rm -rf /var/lib/apt/lists/*
