@@ -15,9 +15,8 @@ WORKDIR /darknet
 
 # 5. Makefile 수정 (CPU 전용 모드로 설정)
 # GPU=0, CUDNN=0, OPENCV=0 (서버/도커 환경에서는 창을 띄우지 못하므로 OpenCV 0이 안정적입니다)
-RUN sed -i 's/OPENCV=1/OPENCV=0/' Makefile
-RUN sed -i 's/GPU=1/GPU=0/' Makefile
-RUN sed -i 's/CUDNN=1/CUDNN=0/' Makefile
+RUN sed -i 's/OPENCV=1/OPENCV=0/; s/GPU=1/GPU=0/; s/CUDNN=1/CUDNN=0/' Makefile && \
+    make
 
 # 6. 컴파일 (Make)
 RUN make
